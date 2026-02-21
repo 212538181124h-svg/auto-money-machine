@@ -1,0 +1,15 @@
+name: AUTO_MONEY_ATTACK
+on:
+  schedule:
+    - cron: '*/30 * * * *' # 30分おきに自動で稼働
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start Attack
+        run: |
+          npm install puppeteer
+          node engine.js
+
