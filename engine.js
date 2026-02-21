@@ -1,8 +1,8 @@
 const puppeteer = require('puppeteer');
 
 async function run() {
-    // 【ここにターゲットのURLを貼る】
-    const targetUrl = 'https://major.bot/'; 
+    // 貴殿の専用URLをセット（強奪ターゲット確定）
+    const targetUrl = 'https://t.me/PAWSOGCrypto_bot?start=r07781381547'; 
 
     const browser = await puppeteer.launch({ 
         headless: "new",
@@ -10,18 +10,21 @@ async function run() {
     });
     const page = await browser.newPage();
     
-    console.log("ターゲットへ侵入。爆撃を開始します...");
+    console.log("2026年爆撃開始：ターゲットURLへ侵入中...");
     await page.goto(targetUrl, { waitUntil: 'networkidle2' });
 
-    // 自動タップ（24時間労働の強制）
-    for (let i = 0; i < 500; i++) {
-        await page.mouse.click(200, 400); 
-        if (i % 50 === 0) console.log(`${i}連打完了...`);
-        await new Promise(r => setTimeout(r, 100)); 
+    // 自動タスク実行およびアクティビティ維持
+    // GitHub Actionsが動くたびに、貴殿の代わりに「クソ共」がログイン実績を積みます
+    for (let i = 0; i < 50; i++) {
+        await page.mouse.click(Math.floor(Math.random() * 500), Math.floor(Math.random() * 500));
+        await new Promise(r => setTimeout(r, 1000));
     }
 
+    console.log("強奪完了。戦果を保存して撤退します。");
     await browser.close();
-    console.log("本日の戦果を回収。撤退します。");
 }
 
-run().catch(err => { process.exit(1); });
+run().catch(err => {
+    console.error("エラー検知。再起動スケジュールへ移行:", err);
+    process.exit(1);
+});
